@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDAM Tirtanadi | Profil Cabang Sunggal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER DAN LOGO FOTO: letakkan file logo di folder yang sama dengan index.html -->
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="logotirtanadi.jpeg" alt="Logo PDAM Tirtanadi">
+      </div>
+      <div>
+        <h1>PDAM TIRTANADI</h1>
+        <p>Profil Cabang Sunggal • Sumatera Utara</p>
+      </div>
+    </div>
+    <a class="home-link" href="#" onclick="showHome(); return false;">⌂ Beranda</a>
+  </header>
+
+  <main>
+    <section id="home">
+      <!-- BANNER FOTO: ganti foto-banner.jpg dengan nama file foto banner kamu -->
+      <div class="hero">
+        <div class="eyebrow">Selamat Datang</div>
+        <h2>Mengenal Lebih Dekat Cabang Sunggal</h2>
+        <p>Temukan sejarah cabang, Struktur tenaga kerja, serta panduan menyampaikan aduan atau keluhan layanan pelanggan.</p>
+      </div>
+
+      <div class="menu-grid" aria-label="Menu utama">
+        <button class="menu-card" onclick="showSection('about')">
+          <span class="menu-icon">⌂</span>
+          <span><strong>Tentang Kami</strong><span>Sejarah, Profil, Visi dan Misi, beserta Galeri Kantor Cabang Sunggal </span></span>
+        </button>
+        <button class="menu-card" onclick="showSection('staff')">
+          <span class="menu-icon">♙</span>
+          <span><strong>Tenaga Kerja</strong><span>Profil kepala cabang dan kepala bagian</span></span>
+        </button>
+        <button class="menu-card" onclick="showSection('complaint')">
+          <span class="menu-icon">☏</span>
+          <span><strong>Aduan/Keluhan</strong><span>Panduan menyampaikan keluhan pelanggan</span></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="content" class="hidden" aria-live="polite"></section>
+  </main>
+
+  <footer>
+  <p>Website Profil PDAM Tirtanadi Sunggal</p>
+  <p>
+    Informasi resmi:
+    <a href="https://smartprovince.sumutprov.go.id/User/sub_menu/473""
+       target="_blank"
+       rel="noopener noreferrer">
+      PDAM Tirtanadi 
+    </a>
+  </p>
+</footer>
+
+  <script>
+    const content = document.getElementById('content');
+    const home = document.getElementById('home');
+
+    // KEMBALI KE BERANDA
+    function showHome() {
+      content.classList.add('hidden');
+      content.innerHTML = '';
+      home.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // PINDAH MENU
+    function showSection(section) {
+      home.classList.add('hidden');
+      content.classList.remove('hidden');
+      if (section === 'about') renderAbout();
+      if (section === 'staff') renderStaff();
+      if (section === 'complaint') renderComplaint();
+      content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // MEMBUAT PANEL INFORMASI
+    function panel(title, subtitle, body, eyebrow = 'Informasi') {
+      content.innerHTML = `
+        <div class="content-panel">
+          <div class="panel-heading">
+            <div class="eyebrow">${eyebrow}</div>
+            <h2>${title}</h2>
+            <p>${subtitle}</p>
+          </div>
+          ${body}
+        </div>`;
+    }
+function renderAbout() {
+  panel('Tentang Kami', 'Informasi umum mengenai PDAM Tirtanadi.', `
+    <div class="info-grid">
+
+      <article class="info-card">
+        <h3>Sejarah PDAM TIRTANADI</h3>
+        <p>Dibangun oleh Pemerintahan Kolonial Belanda pada 8 September 1905 dengan nama NV Waterleiding Maatschappij Ajer Beresih. Inisiatif pembangunan dipimpin Hendrik Cornelius Van Den Honert, Pieter Kolff, dan Charles Marie Hernkenrath dengan kantor pusat awal di Amsterdam, Belanda.</p>
+      </article>
+
+      <article class="info-card">
+        <h3>Profil Cabang</h3>
+        <p>PDAM Tirtanadi Cabang Sunggal merupakan salah satu cabang Perumda Tirtanadi Provinsi Sumatera Utara yang bertugas mengelola pelayanan air bersih bagi masyarakat di wilayah Sunggal. Kegiatannya meliputi pengolahan dan pendistribusian air, pelayanan pelanggan, serta pengelolaan administrasi dan keuangan.</p>
+      </article>
+
+      <article class="info-card">
+        <img src="visi.jpg" class="gambar-visi-misi" alt="Visi PDAM Tirtanadi">
+      </article>
+
+      <article class="info-card">
+        <img src="misi.jpg" class="gambar-visi-misi" alt="Misi PDAM Tirtanadi">
+      </article>
+
+    </div>
+
+        <!-- GALERI: ganti nama foto dan keterangan sesuai dokumentasi kamu.
+             Untuk menambah foto, salin satu blok gallery-slide. -->
+        <div class="gallery-section">
+          <div class="gallery-heading">
+            <h3>Galeri Cabang Sunggal</h3>
+            <p>Dokumentasi ruangan dan lingkungan PDAM Tirtanadi Cabang Sunggal.</p>
+          </div>
+
+          <div class="gallery-container">
+            <div class="gallery-track" id="galleryTrack">
+              <div class="gallery-slide">
+                <img src="slide1.jpg" alt="Prasasti Peresmian">
+                <div class="gallery-caption">Prasasti Peresmian</div>
+              </div>
+              <div class="gallery-slide">
+                <img src="slide2.jpg" alt="Loket Pembayaran">
+                <div class="gallery-caption">Loket Pembayaran</div>
+              </div>
+              <div class="gallery-slide">
+                <img src="slide3.jpg" alt="Customer Service">
+                <div class="gallery-caption">Customer Service</div>
+              </div>
+              <div class="gallery-slide">
+                <img src="slide4.jpg" alt="Ruang Tunggu Pelayanan">
+                <div class="gallery-caption">Ruang Tunggu Pelayanan</div>
+              </div>
+               <div class="gallery-slide">
+                <img src="slide5.jpg" alt="Ruang Pengawasan | Ruang Keuangan">
+                <div class="gallery-caption">Ruang Pengawasan | Ruang Keuangan</div>
+              </div>
+               <div class="gallery-slide">
+                <img src="slide6.jpg" alt="Ruang ">
+                <div class="gallery-caption">Ruang Hubungan Langganan | Ruang Jaringan </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-controls">
+            <button class="gallery-btn" onclick="moveSlide(-1)" aria-label="Foto sebelumnya">&#10094;</button>
+            <span class="gallery-counter" id="galleryCounter">1 / 4</span>
+            <button class="gallery-btn" onclick="moveSlide(1)" aria-label="Foto berikutnya">&#10095;</button>
+          </div>
+        </div>
+
+      
+      `);
+      currentSlide = 0;
+      updateSlide();
+    }
+
+    // FUNGSI GALERI FOTO / SLIDER
+    let currentSlide = 0;
+
+    function updateSlide() {
+      const track = document.getElementById('galleryTrack');
+      const slides = document.querySelectorAll('.gallery-slide');
+      const counter = document.getElementById('galleryCounter');
+      if (!track || slides.length === 0 || !counter) return;
+
+      currentSlide = Math.max(0, Math.min(currentSlide, slides.length - 1));
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function moveSlide(direction) {
+      const slides = document.querySelectorAll('.gallery-slide');
+      if (slides.length === 0) return;
+
+      currentSlide += direction;
+      if (currentSlide >= slides.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
+      updateSlide();
+    }
+
+   // MENU TENAGA KERJA
+function renderStaff() {
+  panel('Tenaga Kerja', 'Susunan pimpinan PDAM Tirtanadi Cabang Sunggal.', `
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Cabang</h3>
+        <p>IWAN HAMSAR SIREGAR S.T, M.Si</p>
+      </div>
+      <img class="staff-photo" src="foto-kacab.jpg" alt="Kepala Cabang">
+    </div>
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Bagian Umum & Manajemen</h3>
+        <p>Devita Andriani</p>
+      </div>
+      <img class="staff-photo" src="foto-umum.jpg" alt="Kepala Bagian Jaringan">
+    </div>
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Bagian Keuangan</h3>
+        <p>Heny</p>
+      </div>
+      <img class="staff-photo" src="foto-administrasi.jpg" alt="Kepala Bagian Administrasi">
+    </div>
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Bagian Jaringan dan Pemeliharaan</h3>
+        <p>Imam Suheri</p>
+      </div>
+      <img class="staff-photo" src="foto-jaringan.jpg" alt="Kepala Bagian Jaringan">
+    </div>
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Aset & Gambar Teknik</h3>
+        <p>Bambang</p>
+      </div>
+      <img class="staff-photo" src="foto-aset.jpg" alt="Kepala Bagian Jaringan">
+    </div>
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Pengawasan</h3>
+        <p>Kali Hamzah Nasution</p>
+      </div>
+      <img class="staff-photo" src="foto-pengawasan.jpg" alt="Kepala Bagian Jaringan">
+    </div>
+
+    <div class="staff-profile">
+      <div class="staff-info">
+        <h3>Kepala Bagian Hubungan Langganan & Pemasaran</h3>
+        <p>Neni Pasaribu</p>
+      </div>
+      <img class="staff-photo" src="foto-langganan.jpg" alt="Kepala Bagian Hubungan Langganan">
+    </div>
+
+
+  `);
+}
+
+    // MENU ADUAN / KELUHAN
+    function renderComplaint() {
+      panel('Panduan Aduan / Keluhan', 'Ikuti langkah berikut sebelum menghubungi layanan pengaduan PDAM Tirtanadi.', `
+        <div class="guide-list">
+          <div class="guide-step"><span class="step-number">1</span><div><h3>Tentukan jenis keluhan</h3><p>Contohnya air tidak mengalir, kebocoran pipa, kualitas air, meteran, atau tagihan yang perlu diperiksa.</p></div></div>
+          <div class="guide-step"><span class="step-number">2</span><div><h3>Siapkan informasi pelanggan</h3><p>Siapkan nama, alamat lengkap, nomor pelanggan atau MPA jika ada, nomor telepon yang bisa dihubungi, serta penjelasan masalah.</p></div></div>
+          <div class="guide-step"><span class="step-number">3</span><div><h3>Tambahkan bukti bila diperlukan</h3><p>Catat kapan masalah terjadi. Siapkan foto atau video pendukung jika relevan dan aman untuk diambil.</p></div></div>
+          <div class="guide-step"><span class="step-number">4</span><div><h3>Hubungi layanan resmi</h3><p>Gunakan kanal resmi PDAM Tirtanadi atau datang ke kantor cabang terdekat. Simpan nomor laporan jika diberikan.</p></div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-pill">☎ Halo Tirtanadi: 1500-922</div>
+        </div>
+       <a class="primary-btn"
+   href="https://halotirtanadi.simtirtanadi.com/index.php"
+   target="_blank"
+   rel="noopener noreferrer">
+   Isi Formulir Pengaduan ↗
+</a>
+        
+      `, 'Layanan Pelanggan');
+    }
+  </script>
+</body>
+</html>
